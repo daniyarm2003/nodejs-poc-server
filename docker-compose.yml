@@ -1,0 +1,14 @@
+services:
+  appdev:
+    image: node:20.9-alpine
+    ports:
+      - "8080:80"
+    profiles:
+      - dev
+    volumes:
+      - .:/app
+    working_dir: /app
+    container_name: test_app_dev
+    command: npm run dev
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

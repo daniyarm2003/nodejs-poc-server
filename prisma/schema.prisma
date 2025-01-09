@@ -1,0 +1,25 @@
+generator client {
+    provider = "prisma-client-js"
+    binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("PRISMA_GENERATE_DEV_URL")
+}
+
+model TestModel {
+    id String @id @default(uuid()) @db.Uuid
+    name String @db.VarChar(128)
+    email String @unique @db.VarChar(128)
+    createdAt DateTime @default(now())
+    groupValue TestEnum @default(FIRST)
+
+    @@map("test_1_testmodel")
+}
+
+enum TestEnum {
+    FIRST
+    SECOND
+    THIRD
+}
