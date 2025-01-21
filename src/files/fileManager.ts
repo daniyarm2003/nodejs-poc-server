@@ -1,7 +1,9 @@
 import { FileInfo } from './fileInfo'
 
+import { Readable, Writable } from 'stream'
+
 export default interface FileManager {
     getFileList: () => Promise<FileInfo[]>
-    getReadStream: (path: string) => Promise<NodeJS.ReadableStream>
-    getWriteStream: (path: string) => Promise<NodeJS.WritableStream>
+    getReadStream: (path: string) => Promise<Readable>
+    getWriteStream: (path: string) => Promise<Writable>
 }
