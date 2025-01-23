@@ -4,6 +4,7 @@ import FileManager from './fileManager'
 import { createReadStream, createWriteStream } from 'fs'
 import fs from 'fs/promises'
 import path from 'path'
+import FileNotFoundError from './fileNotFoundError'
 
 export default class LocalFileManager implements FileManager {
     private baseDirPath: string
@@ -37,6 +38,18 @@ export default class LocalFileManager implements FileManager {
 
     public async getReadStream(filePath: string) {
         const fullPath = path.join(this.baseDirPath, filePath)
+
+        try {
+            const fileStat = await fs.stat(fullPath)
+
+            if(!fileStat.isFile()) {
+                throw new FileNotFoundError(`${filePath} is not a file`)
+            }
+        }
+        catch(err: unknown) {
+            throw new FileNotFoundError(`File ${filePath} does not exist`)
+        }
+
         return createReadStream(fullPath)
     }
 
