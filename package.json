@@ -30,6 +30,7 @@
     "axios": "^1.7.9",
     "class-validator": "^0.14.1",
     "cors": "^2.8.5",
+    "dayjs": "^1.11.13",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mime-types": "^2.1.35"

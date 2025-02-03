@@ -1,4 +1,4 @@
-export interface FileInfo {
+export default interface FileInfo {
     name: string,
     size: number,
     createdAt: Date,

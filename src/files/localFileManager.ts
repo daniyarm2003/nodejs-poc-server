@@ -1,4 +1,4 @@
-import { FileInfo } from './fileInfo'
+import FileInfo from './fileInfo'
 import FileManager from './fileManager'
 
 import { createReadStream, createWriteStream } from 'fs'

@@ -1,4 +1,4 @@
-import { FileInfo } from './fileInfo'
+import FileInfo from './fileInfo'
 
 import { Readable, Writable } from 'stream'
 

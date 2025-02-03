@@ -13,8 +13,8 @@ export default class FileShareController implements BaseController {
     }
 
     public registerRoutes(app: Express) {
-        app.get('/api/files', (req, res) => this.getFileListHandler(req, res))
-        app.get('/api/files/:fileName', (req, res) => this.getFileContentHandler(req, res))
+        app.get('/api/files', (this.getFileListHandler.bind(this)))
+        app.get('/api/files/:fileName', this.getFileContentHandler.bind(this))
     }
 
     private async getFileListHandler(_: Request, res: Response) {
